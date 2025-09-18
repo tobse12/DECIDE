@@ -1,0 +1,69 @@
+Visuelle Stressoren:
+
+FogStressor - Reduzierte Sichtweite durch Nebel
+RainStressor - Regen mit Partikeln, Sound und Blitz
+BlindingEffectStressor - Flashbang-ähnliche temporäre Blendung
+DayNightStressor - Dynamischer Tag/Nacht-Zyklus
+LightningStressor - Blitze mit Donner und Lichteffekten
+VisualDistortionStressor - Blur, Chromatic Aberration, Warp, Tunnel Vision
+
+Audio Stressoren:
+
+BackgroundNoiseStressor - Menschenmenge, Verkehr, Baustellenlärm
+RadioChatterStressor - Verrauschte militärische Funkkommunikation
+DirectionalCalloutStressor - Sprachansagen zur Hostile-Position
+
+Environmental Stressoren:
+
+EnvironmentalChaosStressor - Explosionen, Rauch, Trümmer, Sirenen
+EarthquakeStressor - Kamera-Shake mit Erdbeben-Sound
+
+Gameplay Stressoren:
+
+DecisionConflictStressor - Avatare wechseln Erscheinungsbild
+TimePressureStressor - Countdown-Timer mit Herzschlag-Simulation
+CognitiveLoadStressor - Mathematik-, Memory-, Pattern-Aufgaben
+
+-----
+
+Besondere Features der Stressoren:
+- Adaptive Intensität:
+    - Alle Stressoren reagieren auf die Intensity-Einstellung (0-1)
+    - Höhere Intensität = stärkere Effekte und häufigere Events
+
+- Kombinierbarkeit:
+    - Mehrere Stressoren können gleichzeitig aktiv sein
+    - Synergieeffekte (z.B. Fog + Rain + Lightning = Sturm)
+
+- Audio-Generierung:
+    - Alle Sounds werden prozedural generiert (keine Assets nötig)
+    - Spatial Audio für 3D-Positionierung
+
+- Performance-Optimierung:
+    - Object Pooling für Effekte
+    - LOD-System für visuelle Effekte
+    - Coroutine-basierte Updates
+
+-----
+
+Verwendung der Stressoren:
+
+// Beispiel: Stressor aktivieren
+StressManager stressManager = StressManager.Instance;
+
+// Einzelnen Stressor aktivieren
+stressManager.ActivateStressor("Fog");
+stressManager.SetStressorIntensity("Fog", 0.7f);
+
+// Multiple Stressoren für Chaos-Szenario
+stressManager.ActivateStressor("EnvironmentalChaos");
+stressManager.ActivateStressor("Earthquake");
+stressManager.ActivateStressor("RadioChatter");
+
+// Adaptive Stressor-Aktivierung basierend auf Performance
+if (playerAccuracy < 0.5f) {
+    stressManager.DeactivateStressor("CognitiveLoad");
+} else {
+    stressManager.ActivateStressor("CognitiveLoad");
+    stressManager.SetStressorIntensity("CognitiveLoad", 0.8f);
+}
